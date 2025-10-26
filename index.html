@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawdentify AI - Identify Your Dog's Breed with AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo">🐾</span>
+                <span class="brand-name">Pawdentify AI</span>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#identify" class="nav-link">Identify</a></li>
+                <li><a href="#library" class="nav-link">Breed Library</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Identify Your Dog's Breed with AI</h1>
+                <p class="hero-description">Upload a photo and discover your dog's breed instantly using advanced artificial intelligence technology</p>
+                <button class="btn btn--primary btn--lg" id="heroTryNow">Try Now</button>
+            </div>
+            <div class="hero-image">
+                <div class="hero-icon">🐕</div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose Pawdentify?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Recognition</h3>
+                        <p>Uses advanced Convolutional Neural Network (CNN) model trained on thousands of dog images</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Results</h3>
+                        <p>Get breed identification and comprehensive information in seconds</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Educational</h3>
+                        <p>Learn about temperament, care requirements, lifespan, and exercise needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDENTIFY PAGE -->
+    <section id="identify" class="page">
+        <div class="container">
+            <h1 class="page-title">Identify Your Dog's Breed</h1>
+            <p class="page-subtitle">Upload a photo of your dog and let our AI identify the breed</p>
+
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📸</div>
+                    <h3>Drop your image here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <button class="btn btn--secondary" id="browseBtn">Browse Files</button>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="preview-container">
+                    <img id="previewImage" src="" alt="Preview">
+                    <button class="btn btn--secondary" id="changeImageBtn">Change Image</button>
+                    <button class="btn btn--primary btn--lg" id="identifyBtn">Identify Breed</button>
+                </div>
+            </div>
+
+            <!-- Loading Section -->
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loader"></div>
+                <p>Analyzing your image...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-image">
+                    <img id="resultImage" src="" alt="Result">
+                </div>
+                <div class="result-info">
+                    <div class="confidence-badge" id="confidenceBadge"></div>
+                    <h2 id="breedName" class="breed-name"></h2>
+                    
+                    <div class="info-card">
+                        <h3>Description</h3>
+                        <p id="breedDescription"></p>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Temperament:</strong>
+                            <span id="breedTemperament"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Lifespan:</strong>
+                            <span id="breedLifespan"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Care Requirements</h3>
+                        <p id="breedCare"></p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Exercise Needs</h3>
+                        <p id="breedExercise"></p>
+                    </div>
+                    
+                    <button class="btn btn--primary" id="tryAnotherBtn">Try Another Image</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BREED LIBRARY PAGE -->
+    <section id="library" class="page">
+        <div class="container">
+            <h1 class="page-title">Breed Library</h1>
+            <p class="page-subtitle">Explore all available dog breeds in our database</p>
+            
+            <div class="breed-grid" id="breedGrid">
+                <!-- Breed cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page">
+        <div class="container">
+            <h1 class="page-title">About Pawdentify AI</h1>
+            
+            <div class="about-section">
+                <h2>Project Overview</h2>
+                <p class="about-text">Pawdentify uses advanced Convolutional Neural Network (CNN) technology to identify dog breeds from photos. Upload an image and get instant breed identification along with comprehensive information about temperament, care needs, and characteristics.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Upload Photo</h3>
+                        <p>Upload a clear photo of your dog</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>AI Analysis</h3>
+                        <p>Our AI analyzes the image using a trained CNN model</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Get Results</h3>
+                        <p>Get instant breed identification and detailed information</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2>Model Information</h2>
+                <p class="about-text">Built using TensorFlow/Keras with transfer learning from MobileNetV2. Trained on 10-15 common breeds with 500+ images per breed, achieving over 80% accuracy.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>Milestone Achievements</h2>
+                <ul class="milestone-list">
+                    <li>✅ Clean and balanced dataset of popular dog breeds</li>
+                    <li>✅ Trained CNN model for breed classification</li>
+                    <li>✅ Breed information database with care and temperament details</li>
+                    <li>✅ Web interface for easy breed identification</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Pawdentify AI. Built with ❤️ for dog lovers.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Breed Details -->
+    <div class="modal" id="breedModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 id="modalBreedName"></h2>
+            <div class="modal-body">
+                <p id="modalDescription"></p>
+                <div class="modal-info-grid">
+                    <div class="modal-info-item">
+                        <strong>Temperament:</strong>
+                        <span id="modalTemperament"></span>
+                    </div>
+                    <div class="modal-info-item">
+                        <strong>Lifespan:</strong>
+                        <span id="modalLifespan"></span>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>Care Requirements</h3>
+                    <p id="modalCare"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>Exercise Needs</h3>
+                    <p id="modalExercise"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
